@@ -1,18 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:reminder_app/widgets/category_tab_bar';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reminder_app/constance.dart';
 
-class ReminderScreen extends StatelessWidget {
+import 'package:reminder_app/widgets/custom_app_bar.dart';
+import 'package:reminder_app/widgets/reminde_tab_veiw.dart';
+
+import 'package:reminder_app/widgets/reminder_fab.dart';
+import 'package:reminder_app/widgets/reminder_tap_bar.dart';
+
+class ReminderScreen extends StatefulWidget {
   const ReminderScreen({super.key});
+
+  @override
+  State<ReminderScreen> createState() => _ReminderScreenState();
+}
+
+class _ReminderScreenState extends State<ReminderScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: categoryTabs.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Reminders')),
-      body: CategoryTabBar(
-        selectedIndex: 0, // مؤقتًا لحد ما تربطه بالبلوك
-        onTabSelected: (index) {
-          // هنا هتحط Cubit أو Bloc logic بعدين
-        },
+      backgroundColor: kBackGroundColor,
+      floatingActionButton: const ReminderFAB(),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(title: 'Reminders'),
+              SizedBox(height: 20.h),
+              ReminderTabBar(controller: tabController),
+              SizedBox(height: 20.h),
+              Expanded(child: ReminderTabView(controller: tabController)),
+            ],
+          ),
+        ),
       ),
     );
   }

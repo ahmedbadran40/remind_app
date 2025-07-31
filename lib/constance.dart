@@ -12,4 +12,9 @@ const List<String> categoryTabs = [
   'Family',
   'Personal',
   'Study',
+  'Fitness',
+  'Health',
+  'Shopping',
+  'Sleep',
+  'Reading',
 ];
