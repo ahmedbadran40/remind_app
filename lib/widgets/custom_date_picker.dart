@@ -11,6 +11,7 @@ class CustomDatePicker extends StatelessWidget {
     super.key,
     required this.selectedDate,
     required this.onDateSelected,
+    required Future<Null> Function() onTap,
   });
 
   Future<void> _selectDate(BuildContext context) async {

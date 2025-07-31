@@ -20,13 +20,16 @@ class _CustomSplashBodyState extends State<CustomSplashBody> {
   void initState() {
     super.initState();
 
+    // Start fade-in animation
     Future.delayed(const Duration(milliseconds: 1000), () {
+      if (!mounted) return;
       setState(() {
         _opacity = 1;
         _offsetY = 0;
       });
     });
 
+    // Navigate to home screen after splash
     Future.delayed(const Duration(milliseconds: 5000), () {
       if (!mounted) return;
       Navigator.pushReplacement(

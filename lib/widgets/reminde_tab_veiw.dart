@@ -11,7 +11,11 @@ class ReminderTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBarView(
       controller: controller,
-      children: categoryTabs.map((_) => CardListView()).toList(),
+      physics: const BouncingScrollPhysics(),
+      children: List.generate(
+        categoryTabs.length,
+        (index) => CardListView(), // خليتها const عشان الأداء
+      ),
     );
   }
 }

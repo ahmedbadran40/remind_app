@@ -33,33 +33,65 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextField(controller: _titleController, hint: 'Title'),
-                SizedBox(height: 20.h),
+                CustomTextField(
+                  controller: _titleController,
+                  hint: 'Enter reminder title',
+                ),
+
+                SizedBox(height: 24.h),
+
+                /// Date Picker
                 CustomDatePicker(
                   selectedDate: _selectedDate,
                   onDateSelected: (date) {
                     setState(() => _selectedDate = date);
                   },
+                  onTap: () async {
+                    final picked = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2023),
+                      lastDate: DateTime(2100),
+                    );
+                    if (picked != null) {
+                      setState(() => _selectedDate = picked);
+                    }
+                  },
                 ),
-                SizedBox(height: 20.h),
+
+                SizedBox(height: 24.h),
                 CustomTimePicker(
                   selectedTime: _selectedTime,
                   onTimeSelected: (time) {
                     setState(() => _selectedTime = time);
                   },
+                  onTap: () async {
+                    final picked = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.now(),
+                    );
+                    if (picked != null) {
+                      setState(() => _selectedTime = picked);
+                    }
+                  },
                 ),
-                SizedBox(height: 20.h),
+
+                SizedBox(height: 24.h),
+
                 CustomCategoryDropdown(
-                  selectedCategory: _selectedCategory,
+                  selectedCategory: _selectedCategory ?? '',
                   onCategorySelected: (category) {
                     setState(() => _selectedCategory = category);
                   },
                 ),
-                SizedBox(height: 30.h),
+
+                SizedBox(height: 40.h),
+
+                /// Add Reminder Button
                 CustomAddReminderButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // TODO: Save logic
+                      // TODO: Save to Hive / Bloc
                       Navigator.pop(context);
                     }
                   },

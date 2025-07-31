@@ -12,6 +12,7 @@ class CustomTimePicker extends StatelessWidget {
     super.key,
     required this.selectedTime,
     required this.onTimeSelected,
+    required Future<Null> Function() onTap,
   });
 
   @override

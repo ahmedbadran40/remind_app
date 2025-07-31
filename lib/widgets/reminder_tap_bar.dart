@@ -16,7 +16,10 @@ class ReminderTabBar extends StatelessWidget {
       labelColor: Colors.brown,
       unselectedLabelColor: Colors.grey,
       labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-      tabs: categoryTabs.map((tab) => Tab(text: tab)).toList(),
+      tabs: List.generate(
+        categoryTabs.length,
+        (index) => Tab(text: categoryTabs[index]),
+      ),
     );
   }
 }

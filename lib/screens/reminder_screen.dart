@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reminder_app/constance.dart';
-
 import 'package:reminder_app/widgets/custom_app_bar.dart';
 import 'package:reminder_app/widgets/reminde_tab_veiw.dart';
-
 import 'package:reminder_app/widgets/reminder_fab.dart';
 import 'package:reminder_app/widgets/reminder_tap_bar.dart';
 
@@ -34,7 +32,8 @@ class _ReminderScreenState extends State<ReminderScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackGroundColor,
+      backgroundColor:
+          kBackGroundColor, // ممكن تستخدم Theme.of(context).scaffoldBackgroundColor
       floatingActionButton: const ReminderFAB(),
       body: SafeArea(
         child: Padding(
