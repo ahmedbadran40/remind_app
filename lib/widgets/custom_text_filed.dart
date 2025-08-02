@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/custom_text.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -15,11 +16,9 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: CustomText(title: 'Title'),
-        ),
+        CustomText(title: AppStrings.titleLabel),
         SizedBox(height: 8.h),
         TextFormField(
           controller: controller,
@@ -45,7 +44,7 @@ class CustomTextField extends StatelessWidget {
           ),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'Please enter a value';
+              return AppStrings.enterValueValidation;
             }
             return null;
           },

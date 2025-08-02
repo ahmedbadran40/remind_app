@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_assets.dart';
 
 class LogoWidget extends StatelessWidget {
   final double opacity;

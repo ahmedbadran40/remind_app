@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_colors.dart';
 import 'package:reminder_app/screens/reminder_screen.dart';
 import 'package:reminder_app/widgets/custom_logo.dart';
-import 'package:reminder_app/widgets/custom_title_widget.dart';
+import 'package:reminder_app/widgets/custom_title_splash_screen.dart';
 
 class CustomSplashBody extends StatefulWidget {
   const CustomSplashBody({super.key});

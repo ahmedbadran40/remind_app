@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/core/constants/app_links.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPolicyButton extends StatelessWidget {
   const PrivacyPolicyButton({super.key});
 
-  final String _privacyUrl =
-      'https://doc-hosting.flycricket.io/remind-privacy-policy/d41b5446-8055-4f1e-8d35-0cb802afe38e/privacy'; // 🔁 Replace with actual link
+  final String _privacyUrl = AppLinks.privacyPolicyUrl;
 
   Future<void> _launchUrl() async {
     final Uri url = Uri.parse(_privacyUrl);
@@ -19,7 +20,7 @@ class PrivacyPolicyButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: _launchUrl,
       icon: const Icon(Icons.language),
-      label: const Text("Open Privacy Policy"),
+      label: const Text(AppStrings.openPrivacyPolicy),
     );
   }
 }

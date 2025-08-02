@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/models/reminder_model.dart';
 import 'package:reminder_app/widgets/reminde_card_item.dart';
 
@@ -23,10 +24,10 @@ class DismissibleReminderCard extends StatelessWidget {
         await reminder.delete();
 
         messenger.showSnackBar(
-          const SnackBar(content: Text('Reminder deleted')),
+          const SnackBar(content: Text(AppStrings.reminderDeleted)),
         );
       },
-      child: ReminderCard(reminder: reminder), // ✅ التعديل هنا
+      child: ReminderCard(reminder: reminder),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_colors.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 
 class TitleWidget extends StatelessWidget {
   final double offsetY;
@@ -20,7 +21,7 @@ class TitleWidget extends StatelessWidget {
         child: Transform.translate(
           offset: Offset(0, -50.h),
           child: Text(
-            'RemindMe',
+            AppStrings.appTitleSplashScreen,
             style: TextStyle(
               color: kColorApp,
               fontSize: 35.sp,

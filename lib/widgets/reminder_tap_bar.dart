@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_lists.dart';
 
 class ReminderTabBar extends StatelessWidget {
   final TabController controller;
@@ -15,6 +15,7 @@ class ReminderTabBar extends StatelessWidget {
       indicatorColor: Colors.orange,
       labelColor: Colors.brown,
       unselectedLabelColor: Colors.grey,
+      //labelPadding: EdgeInsets.only(right: 16.w, left: 16.w),
       labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
       tabs: List.generate(
         categoryTabs.length,

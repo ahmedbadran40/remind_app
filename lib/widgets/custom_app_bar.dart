@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+
+import 'package:reminder_app/core/constants/app_colors.dart';
 import 'package:reminder_app/screens/settings_screen.dart';
 
 class CustomAppBar extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 
 import 'package:reminder_app/widgets/terms_button.dart';
 
@@ -13,7 +14,7 @@ class TermsOfServiceScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          'Terms of Service',
+          AppStrings.termsOfServiceTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

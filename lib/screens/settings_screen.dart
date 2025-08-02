@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/dark_mode_title.dart';
 import 'package:reminder_app/widgets/exit_app_tile.dart';
 import 'package:reminder_app/widgets/settings_group.dart';
@@ -13,7 +14,7 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text(
-          'Settings',
+          AppStrings.settingsTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

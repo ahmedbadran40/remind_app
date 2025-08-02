@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_colors.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/models/reminder_model.dart';
 import 'package:reminder_app/widgets/custom_add_remind_botton.dart';
 import 'package:reminder_app/widgets/custom_category_drop_down.dart';
@@ -29,7 +30,7 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Add Reminder',
+          AppStrings.addReminder,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).brightness == Brightness.dark
@@ -50,7 +51,7 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
               children: [
                 CustomTextField(
                   controller: _titleController,
-                  hint: 'Enter reminder title',
+                  hint: AppStrings.enterReminderTitle,
                 ),
 
                 SizedBox(height: 24.h),
@@ -61,19 +62,7 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
                   onDateSelected: (date) {
                     setState(() => _selectedDate = date);
                   },
-                  onTap: () async {
-                    final picked = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2023),
-                      lastDate: DateTime(2100),
-                    );
-                    if (picked != null) {
-                      setState(() => _selectedDate = picked);
-                    }
-                  },
                 ),
-
                 SizedBox(height: 24.h),
 
                 /// Time Picker
@@ -114,7 +103,7 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
                           _selectedCategory == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Please fill all fields'),
+                            content: Text(AppStrings.pleaseFillAllFields),
                           ),
                         );
                         return;
@@ -135,7 +124,7 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
                       //  إضافة التذكير في الـ Hive box
                       final reminderBox = Hive.box<ReminderModel>('reminders');
                       await reminderBox.add(reminder);
-
+                      if (!context.mounted) return;
                       //  الرجوع بعد الحفظ
                       Navigator.pop(context);
                     }

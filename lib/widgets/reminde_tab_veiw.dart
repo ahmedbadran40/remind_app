@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_lists.dart';
 import 'package:reminder_app/widgets/card_list_view.dart';
 
 class ReminderTabView extends StatelessWidget {

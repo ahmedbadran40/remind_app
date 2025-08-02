@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/logic/cubit/theme_cubit.dart';
 
 class DarkModeTile extends StatelessWidget {
@@ -15,7 +16,7 @@ class DarkModeTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           title: Text(
-            'Dark Mode',
+            AppStrings.darkMode,
             style: Theme.of(
               context,
             ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),

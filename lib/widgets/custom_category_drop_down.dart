@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_lists.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/custom_text.dart';
 
 class CustomCategoryDropdown extends StatelessWidget {
@@ -16,11 +17,9 @@ class CustomCategoryDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: CustomText(title: 'Category'),
-        ),
+        CustomText(title: AppStrings.kCategory),
         SizedBox(height: 8.h),
         DropdownButtonFormField<String>(
           value: categoryTabs.contains(selectedCategory)
@@ -29,7 +28,7 @@ class CustomCategoryDropdown extends StatelessWidget {
           onChanged: onCategorySelected,
           icon: const Icon(Icons.arrow_drop_down),
           decoration: InputDecoration(
-            labelText: 'Category',
+            hintText: AppStrings.kCategory,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
             ),
@@ -39,9 +38,7 @@ class CustomCategoryDropdown extends StatelessWidget {
             ),
             filled: true,
             fillColor: Theme.of(context).brightness == Brightness.dark
-                ? const Color(
-                    0xFF1E1B24,
-                  ) // لون مشابه للـ TextField في الدارك مود
+                ? const Color(0xFF1E1B24)
                 : Colors.white,
           ),
           items: categoryTabs.map((category) {

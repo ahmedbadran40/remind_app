@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/privacy_button.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
@@ -12,12 +13,13 @@ class PrivacyPolicyScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          'Privacy Policy',
+          AppStrings.privacyPolicyTitle,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
+
           onPressed: () => Navigator.pop(context),
         ),
       ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/custom_text.dart';
 
 class CustomTimePicker extends StatelessWidget {
@@ -20,7 +21,7 @@ class CustomTimePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomText(title: 'Time'),
+        const CustomText(title: AppStrings.timeLabel),
         SizedBox(height: 8.h),
         GestureDetector(
           onTap: () async {
@@ -51,7 +52,7 @@ class CustomTimePicker extends StatelessWidget {
                 Text(
                   selectedTime != null
                       ? selectedTime!.format(context)
-                      : 'Select Time',
+                      : AppStrings.selectTime,
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: Theme.of(context).textTheme.bodyLarge!.color,

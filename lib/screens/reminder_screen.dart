@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/core/constants/app_lists.dart';
+import 'package:reminder_app/core/constants/app_strings.dart';
 import 'package:reminder_app/widgets/custom_app_bar.dart';
 import 'package:reminder_app/widgets/reminde_tab_veiw.dart';
 import 'package:reminder_app/widgets/reminder_fab.dart';
@@ -32,9 +33,7 @@ class _ReminderScreenState extends State<ReminderScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(
-        context,
-      ).scaffoldBackgroundColor, // ممكن تستخدم Theme.of(context).scaffoldBackgroundColor
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       floatingActionButton: const ReminderFAB(),
       body: SafeArea(
         child: Padding(
@@ -42,7 +41,7 @@ class _ReminderScreenState extends State<ReminderScreen>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomAppBar(title: 'Reminders'),
+              const CustomAppBar(title: AppStrings.remindersTitle),
               SizedBox(height: 20.h),
               ReminderTabBar(controller: tabController),
               SizedBox(height: 20.h),
