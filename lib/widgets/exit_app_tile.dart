@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class ExitAppTile extends StatelessWidget {
   const ExitAppTile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      tileColor: Colors.red[100],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      tileColor: Theme.of(context).cardColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       title: const Text(
         'Exit App',
         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),

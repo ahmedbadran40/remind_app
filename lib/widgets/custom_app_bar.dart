@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reminder_app/constance.dart';
@@ -19,7 +17,10 @@ class CustomAppBar extends StatelessWidget {
           style: TextStyle(
             fontSize: 26.sp,
             fontWeight: FontWeight.bold,
-            color: kColorApp,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors
+                      .white // أو أي لون للدارك مود
+                : kColorApp,
           ),
         ),
 

@@ -11,10 +11,6 @@ const List<String> categoryTabs = [
   'Work',
   'Family',
   'Personal',
-  'Study',
-  'Fitness',
   'Health',
   'Shopping',
-  'Sleep',
-  'Reading',
 ];

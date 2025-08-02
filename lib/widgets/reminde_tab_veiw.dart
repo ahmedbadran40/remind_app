@@ -14,7 +14,7 @@ class ReminderTabView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       children: List.generate(
         categoryTabs.length,
-        (index) => CardListView(), // خليتها const عشان الأداء
+        (index) => CardListView(selectedCategory: categoryTabs[index]),
       ),
     );
   }

@@ -12,8 +12,10 @@ class CustomText extends StatelessWidget {
       title,
       style: TextStyle(
         fontSize: 16.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.brown,
+        fontWeight: FontWeight.bold,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white
+            : Color(0xff693417),
       ),
     );
   }

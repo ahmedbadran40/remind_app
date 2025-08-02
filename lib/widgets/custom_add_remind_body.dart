@@ -1,6 +1,9 @@
 // 📁 screens/add_reminder_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:reminder_app/constance.dart';
+import 'package:reminder_app/models/reminder_model.dart';
 import 'package:reminder_app/widgets/custom_add_remind_botton.dart';
 import 'package:reminder_app/widgets/custom_category_drop_down.dart';
 import 'package:reminder_app/widgets/custom_date_picker.dart';
@@ -24,7 +27,19 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add Reminder'), centerTitle: true),
+      appBar: AppBar(
+        title: Text(
+          'Add Reminder',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors
+                      .white // أو أي لون للدارك مود
+                : kColorApp,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: EdgeInsets.all(20.w),
         child: Form(
@@ -60,6 +75,8 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
                 ),
 
                 SizedBox(height: 24.h),
+
+                /// Time Picker
                 CustomTimePicker(
                   selectedTime: _selectedTime,
                   onTimeSelected: (time) {
@@ -89,9 +106,37 @@ class _CustomAddRemindBodyState extends State<CustomAddRemindBody> {
 
                 /// Add Reminder Button
                 CustomAddReminderButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      // TODO: Save to Hive / Bloc
+                      // ✅ تحقق من ملئ جميع الحقول
+                      if (_selectedDate == null ||
+                          _selectedTime == null ||
+                          _selectedCategory == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please fill all fields'),
+                          ),
+                        );
+                        return;
+                      }
+
+                      final reminder = ReminderModel(
+                        title: _titleController.text.trim(),
+                        dateTime: DateTime(
+                          _selectedDate!.year,
+                          _selectedDate!.month,
+                          _selectedDate!.day,
+                          _selectedTime!.hour,
+                          _selectedTime!.minute,
+                        ),
+                        category: _selectedCategory!,
+                      );
+
+                      //  إضافة التذكير في الـ Hive box
+                      final reminderBox = Hive.box<ReminderModel>('reminders');
+                      await reminderBox.add(reminder);
+
+                      //  الرجوع بعد الحفظ
                       Navigator.pop(context);
                     }
                   },

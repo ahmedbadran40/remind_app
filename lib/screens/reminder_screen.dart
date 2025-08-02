@@ -32,8 +32,9 @@ class _ReminderScreenState extends State<ReminderScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          kBackGroundColor, // ممكن تستخدم Theme.of(context).scaffoldBackgroundColor
+      backgroundColor: Theme.of(
+        context,
+      ).scaffoldBackgroundColor, // ممكن تستخدم Theme.of(context).scaffoldBackgroundColor
       floatingActionButton: const ReminderFAB(),
       body: SafeArea(
         child: Padding(

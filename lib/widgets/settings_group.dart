@@ -14,6 +14,7 @@ class SettingsGroup extends StatelessWidget {
       children: [
         SettingsTile(
           title: 'Privacy Policy',
+
           onTap: () {
             Navigator.push(
               context,

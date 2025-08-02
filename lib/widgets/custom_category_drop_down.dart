@@ -17,6 +17,10 @@ class CustomCategoryDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: CustomText(title: 'Category'),
+        ),
         SizedBox(height: 8.h),
         DropdownButtonFormField<String>(
           value: categoryTabs.contains(selectedCategory)
@@ -34,7 +38,11 @@ class CustomCategoryDropdown extends StatelessWidget {
               vertical: 14.h,
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).brightness == Brightness.dark
+                ? const Color(
+                    0xFF1E1B24,
+                  ) // لون مشابه للـ TextField في الدارك مود
+                : Colors.white,
           ),
           items: categoryTabs.map((category) {
             return DropdownMenuItem(

@@ -52,9 +52,14 @@ class CustomDatePicker extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? const Color(
+                      0xFF1E1B24,
+                    ) // لون مشابه للـ TextField في الدارك مود
+                  : Colors.white,
+
               borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(color: Colors.grey.shade300),
+              //border: Border.all(color: Colors.grey.shade300),
             ),
             child: Row(
               children: [
@@ -64,7 +69,10 @@ class CustomDatePicker extends StatelessWidget {
                   selectedDate != null
                       ? DateFormat.yMMMMd().format(selectedDate!)
                       : 'Select Date',
-                  style: TextStyle(fontSize: 16.sp, color: Colors.black87),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
+                  ),
                 ),
               ],
             ),

@@ -26,9 +26,14 @@ class CustomTextField extends StatelessWidget {
           style: TextStyle(fontSize: 16.sp),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(color: Colors.grey, fontSize: 14.sp),
+            hintStyle: TextStyle(
+              color: Theme.of(context).textTheme.bodyLarge!.color,
+              fontSize: 14.sp,
+            ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF1E1B24)
+                : Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide.none,
